@@ -1,0 +1,89 @@
+{
+  "name": "line_chart",
+  "displayName": "Line Chart",
+  "filename": "LineChart.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "type": "metric"
+    },
+    {
+      "name": "history_count",
+      "label": "History count",
+      "type": "number"
+    },
+    {
+      "label": "Y Axis",
+      "type": "separator"
+    },
+    {
+      "name": "min",
+      "label": "Min Value",
+      "type": "number"
+    },
+    {
+      "name": "max",
+      "label": "Max Value",
+      "type": "number"
+    },
+    {
+      "name": "yaxis_label_color",
+      "label": "Label Color",
+      "type": "color"
+    },
+    {
+      "name": "yaxis_label_font_size",
+      "label": "Font Size",
+      "type": "number"
+    },
+    {
+      "name": "yaxis_label_font",
+      "label": "Label Font",
+      "type": "font"
+    },
+    {
+      "name": "yaxis_label_space",
+      "label": "Label Space",
+      "type": "number"
+    },
+    {
+      "name": "hide_yaxis",
+      "label": "Hide",
+      "type": "checkbox"
+    },
+    {
+      "label": "Line",
+      "type": "separator"
+    },
+    {
+      "name": "line_color",
+      "label": "Color",
+      "type": "color"
+    },
+    {
+      "name": "line_width",
+      "label": "Width",
+      "type": "number"
+    },
+    {
+      "name": "line_curve",
+      "label": "Curve",
+      "type": "select",
+      "options": [
+        {
+          "value": "linear",
+          "label": "Linear"
+        },
+        {
+          "value": "monotone",
+          "label": "Monotone"
+        },
+        {
+          "value": "natural",
+          "label": "Natural"
+        }
+      ]
+    }
+  ]
+}

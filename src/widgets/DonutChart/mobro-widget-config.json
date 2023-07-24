@@ -1,0 +1,75 @@
+{
+  "name": "donut_chart",
+  "displayName": "Donut Chart",
+  "filename": "DonutChart.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "type": "metric"
+    },
+    {
+      "label": "Look and feel",
+      "type": "separator"
+    },
+    {
+      "name": "max",
+      "label": "Max Value",
+      "type": "number"
+    },
+    {
+      "name": "font_family",
+      "label": "Font Family",
+      "type": "font"
+    },
+    {
+      "name": "font_color",
+      "label": "Font Color",
+      "type": "color"
+    },
+    {
+      "label": "Chart Colors & Thresholds",
+      "type": "separator"
+    },
+    {
+      "name": "color",
+      "label": "Front Color",
+      "type": "color"
+    },
+    {
+      "name": "back_color",
+      "label": "Back Color",
+      "type": "color"
+    },
+    {
+      "label": "Warning",
+      "type": "separator"
+    },
+    {
+      "name": "warning_threshold",
+      "label": "Threshold (%)",
+      "type": "number",
+      "min": 0
+    },
+    {
+      "name": "warning_color",
+      "label": "Color",
+      "type": "color"
+    },
+    {
+      "label": "Critical",
+      "type": "separator"
+    },
+    {
+      "name": "critical_threshold",
+      "label": "Threshold (%)",
+      "type": "number",
+      "min": 0
+    },
+    {
+      "name": "critical_color",
+      "label": "Color",
+      "type": "color"
+    }
+  ]
+}

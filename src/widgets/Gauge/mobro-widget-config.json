@@ -1,0 +1,82 @@
+{
+  "name": "gauge",
+  "displayName": "Gauge Chart",
+  "filename": "GaugeChart.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "type": "metric"
+    },
+    {
+      "label": "Look and feel",
+      "type": "separator"
+    },
+    {
+      "name": "max",
+      "label": "Max Value",
+      "type": "number"
+    },
+    {
+      "name": "thickness",
+      "label": "Thickness",
+      "type": "number",
+      "min": 1
+    },
+    {
+      "name": "corner_radius",
+      "label": "Corner Radius",
+      "type": "number",
+      "min": 0
+    },
+    {
+      "label": "Colors & Thresholds",
+      "type": "separator"
+    },
+    {
+      "name": "color",
+      "label": "Color",
+      "type": "color"
+    },
+    {
+      "name": "back_color",
+      "label": "Back Color",
+      "type": "color"
+    },
+    {
+      "name": "hide_thresholds",
+      "label": "Hide Thresholds",
+      "type": "checkbox"
+    },
+    {
+      "label": "Warning",
+      "type": "separator"
+    },
+    {
+      "name": "warning_threshold",
+      "label": "Threshold (%)",
+      "type": "number",
+      "min": 0
+    },
+    {
+      "name": "warning_color",
+      "label": "Color",
+      "type": "color"
+    },
+    {
+      "label": "Critical",
+      "type": "separator"
+    },
+    {
+      "name": "critical_threshold",
+      "label": "Threshold (%)",
+      "type": "number",
+      "min": 0
+    },
+    {
+      "name": "critical_color",
+      "label": "Color",
+      "type": "color"
+    }
+  ]
+}
