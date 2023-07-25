@@ -50,7 +50,7 @@
     "lodash-es": "^4.17.21",
     "react-query": "^3.39.0",
     "recoil": "^0.6.1",
-    "@modbros/dashboard-sdk": "0.0.15",
+    "@modbros/dashboard-sdk": "0.0.16",
     "@modbros/dashboard-core": "0.0.22"
   }
 }

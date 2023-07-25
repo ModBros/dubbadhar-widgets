@@ -8,7 +8,7 @@ interface UseMetricFieldHistoryProps extends BaseFieldHookProps {
 }
 
 export interface TimedMetricValue {
-  metricValue: MetricValue
+  channelValue: ChannelValue
   timestamp: Date
 }
 
@@ -23,7 +23,7 @@ export function useMetricFieldHistory(props: UseMetricFieldHistoryProps): {
   if (channelValue?.value && lastValueRef.current !== channelValue) {
     lastValueRef.current = channelValue
     historyRef.current.push({
-      metricValue: channelValue.value,
+      channelValue,
       timestamp: new Date()
     })
 

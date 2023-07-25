@@ -1,6 +1,6 @@
 {
   "name": "bar_chart",
-  "displayName": "Bar Chart",
+  "displayName": "Bar",
   "filename": "BarChart.tsx",
   "config": [
     {
@@ -9,7 +9,7 @@
       "type": "metric"
     },
     {
-      "label": "Look and feel",
+      "label": "Look & feel",
       "type": "separator"
     },
     {

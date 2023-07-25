@@ -11,6 +11,7 @@ export interface PieChartValueProps {
   fontColor: Color
   fontFamily?: string
   max: number
+  label: string
   value: number
   hideLabel: boolean
   hideUnit: boolean
@@ -23,29 +24,37 @@ export const PieChartValue = (props: PieChartValueProps) => {
     valueColor,
     fontColor,
     fontFamily,
+    label,
     value,
     channelValue,
     hideLabel,
     hideUnit
   } = props
 
-  const label = !hideLabel && (
+  const fontSize = height / 5
+  const labelsFontSize = fontSize / 2.5
+
+  const l = !hideLabel && (
     <Text.Text
       textAnchor={'middle'}
       verticalAnchor={'middle'}
       fill={fontColor.toRgbaCss()}
-      fontSize={30}
+      y={-fontSize}
+      fontSize={labelsFontSize}
+      fontFamily={fontFamily}
     >
-      {channelValue.metric.label}
+      {label}
     </Text.Text>
   )
 
-  const unit = !hideUnit && (
+  const u = !hideUnit && (
     <Text.Text
       textAnchor={'middle'}
       verticalAnchor={'middle'}
       fill={fontColor.toRgbaCss()}
-      fontSize={30}
+      y={fontSize}
+      fontSize={labelsFontSize}
+      fontFamily={fontFamily}
     >
       {channelValue.unit.abbreviation}
     </Text.Text>
@@ -53,17 +62,19 @@ export const PieChartValue = (props: PieChartValueProps) => {
 
   return (
     <>
-      {label}
+      {l}
+
+      {u}
+
       <Text.Text
         textAnchor={'middle'}
         verticalAnchor={'middle'}
         fill={valueColor.toRgbaCss()}
-        fontSize={30}
+        fontSize={fontSize}
+        fontFamily={fontFamily}
       >
-        {value}
+        {value.toString()}
       </Text.Text>
-
-      {label}
     </>
   )
 }

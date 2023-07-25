@@ -1,14 +1,23 @@
-import React, { FunctionComponent } from 'react'
+import React, {
+  CSSProperties,
+  forwardRef,
+  FunctionComponent,
+  ReactNode,
+  useRef
+} from 'react'
 import {
+  Color,
   Loading,
   MissingConfigPlaceholder,
   useCheckboxField,
   useColorField,
   useFontField,
+  useFormattedMetricValue,
   useIsMetricFieldConfigured,
   useItemSize,
   useNumberField,
-  useSelectField
+  useSelectField,
+  useStringField
 } from '@modbros/dashboard-sdk'
 import { Axis, Curve, Group, Shape } from '@visx/visx'
 import {
@@ -18,6 +27,9 @@ import {
 import { scaleLinear } from 'd3-scale'
 import { extent } from 'd3-array'
 import { isNil } from 'lodash-es'
+import { defaultFontColor, defaultLineColor } from '../../utils/constants'
+import styled from 'styled-components'
+import { ChannelValue } from '@modbros/dashboard-core'
 
 function getCurve(curve: string) {
   switch (curve) {
@@ -33,7 +45,54 @@ function getCurve(curve: string) {
   }
 }
 
-const LineChart: FunctionComponent = () => {
+interface HeaderProps {
+  channelValue: ChannelValue
+  label?: string
+  fontColor?: Color
+  fontSize?: number
+  fontFamily?: string
+}
+
+const StyledHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+`
+
+const Header = forwardRef((props: HeaderProps, ref) => {
+  const { channelValue, label, fontColor, fontSize, fontFamily } = props
+
+  const value = useFormattedMetricValue(channelValue, {
+    valueBasedPrecision: true,
+    precision: 2
+  })
+
+  const style: CSSProperties = {
+    color: 'white',
+    fontSize: fontSize ? `${fontSize}px` : undefined,
+    fontFamily: fontFamily
+  }
+
+  return (
+    <StyledHeader ref={ref}>
+      <span style={style}>
+        {label ? label : channelValue.metric.label} - {value.unit}
+      </span>
+
+      <span style={style}>{value.value}</span>
+    </StyledHeader>
+  )
+})
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`
+
+const LineChart = () => {
   const metricConfigured = useIsMetricFieldConfigured({ field: 'metric' })
   const { width, height } = useItemSize()
   const historyCount = useNumberField({
@@ -46,12 +105,19 @@ const LineChart: FunctionComponent = () => {
   })
   const lineColor = useColorField({
     field: 'line_color',
-    defaultColor: '#000000'
+    defaultColor: defaultLineColor
   })
   const lineCurve = useSelectField({
     field: 'line_curve',
     defaultValue: 'linear'
   })
+  const label = useStringField({ field: 'label' })
+  const fontSize = useNumberField({ field: 'font_size', defaultValue: 24 })
+  const fontColor = useColorField({
+    field: 'font_color',
+    defaultColor: defaultFontColor
+  })
+  const fontFamily = useFontField({ field: 'font_family' })
   const maxValue = useNumberField({ field: 'max' })
   const minValue = useNumberField({ field: 'min' })
   const lineWidth = useNumberField({ field: 'line_width', defaultValue: 3 })
@@ -60,15 +126,11 @@ const LineChart: FunctionComponent = () => {
     field: 'yaxis_label_font_size',
     defaultValue: 12
   })
-  const yaxisLabelFont = useFontField({ field: 'yaxis_label_font' })
   const yaxisLabelSpace = useNumberField({
     field: 'yaxis_label_space',
     defaultValue: yaxisLabelFontSize * 4
   })
-  const yaxisLabelColor = useColorField({
-    field: 'yaxis_label_color',
-    defaultColor: '#000000'
-  })
+  const headerRef = useRef<HTMLDivElement | null>(null)
 
   if (!metricConfigured) {
     return <MissingConfigPlaceholder text={'Please provide a metric'} />
@@ -78,9 +140,11 @@ const LineChart: FunctionComponent = () => {
     return <Loading />
   }
 
+  const timedValue = values[values.length - 1]
+
   const getTimestamp = (d: TimedMetricValue) => d.timestamp
   const getValue = (d: TimedMetricValue) =>
-    parseFloat(d.metricValue.value.toString())
+    parseFloat(d.channelValue.value.value.toString())
 
   const domain = extent(values, getValue)
 
@@ -95,49 +159,61 @@ const LineChart: FunctionComponent = () => {
   domain[0] = Math.floor(domain[0])
   domain[1] = Math.ceil(domain[1])
 
+  const chartHeight = headerRef.current ? height - headerRef.current.clientHeight : height
+
   const timeScale = scaleLinear()
     .range([0, width])
     .domain(extent(values, getTimestamp))
   const valueScale = scaleLinear()
-    .range([hideYAxis ? height : height - yaxisLabelFontSize * 2, 0])
+    .range([hideYAxis ? chartHeight : chartHeight - yaxisLabelFontSize * 2, 0])
     .domain(domain)
 
   return (
-    <svg width={width} height={height}>
-      <Group.Group
-        left={hideYAxis ? 0 : yaxisLabelSpace}
-        top={hideYAxis ? 0 : yaxisLabelFontSize}
-        height={hideYAxis ? height : height - yaxisLabelFontSize * 2}
-      >
-        <Shape.Area
-          stroke={lineColor.toRgbaCss()}
-          curve={getCurve(lineCurve)}
-          strokeWidth={lineWidth}
-          data={values}
-          x={(d) => timeScale(getTimestamp(d)) ?? 0}
-          y={(d) => valueScale(getValue(d)) ?? 0}
-        />
-        {!hideYAxis && (
-          <Axis.AxisLeft
-            tickStroke='transparent'
-            tickComponent={({ formattedValue, ...props }) => (
-              <text
-                {...props}
-                fill={yaxisLabelColor.toRgbaCss()}
-                fontSize={yaxisLabelFontSize}
-                fontFamily={yaxisLabelFont}
-              >
-                {formattedValue}
-              </text>
-            )}
-            hideAxisLine={true}
-            tickValues={domain}
-            tickFormat={(value) => `${value} ${unit?.abbreviation}`}
-            scale={valueScale}
+    <StyledContainer>
+      <Header
+        ref={headerRef}
+        label={label}
+        channelValue={timedValue.channelValue}
+        fontSize={fontSize}
+        fontColor={fontColor}
+        fontFamily={fontFamily}
+      />
+      <svg width={'100%'} height={'100%'}>
+        <Group.Group
+          left={hideYAxis ? 0 : yaxisLabelSpace}
+          top={hideYAxis ? 0 : yaxisLabelFontSize}
+          height={hideYAxis ? chartHeight : chartHeight - yaxisLabelFontSize * 2}
+        >
+          <Shape.Area
+            stroke={lineColor.toRgbaCss()}
+            curve={getCurve(lineCurve)}
+            strokeWidth={lineWidth}
+            data={values}
+            x={(d) => timeScale(getTimestamp(d)) ?? 0}
+            y={(d) => valueScale(getValue(d)) ?? 0}
           />
-        )}
-      </Group.Group>
-    </svg>
+          {!hideYAxis && (
+            <Axis.AxisLeft
+              tickStroke='transparent'
+              tickComponent={({ formattedValue, ...props }) => (
+                <text
+                  {...props}
+                  fill={fontColor.toRgbaCss()}
+                  fontSize={yaxisLabelFontSize}
+                  fontFamily={fontFamily}
+                >
+                  {formattedValue}
+                </text>
+              )}
+              hideAxisLine={true}
+              tickValues={domain}
+              tickFormat={(value) => value.toString()}
+              scale={valueScale}
+            />
+          )}
+        </Group.Group>
+      </svg>
+    </StyledContainer>
   )
 }
 

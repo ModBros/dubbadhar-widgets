@@ -1,6 +1,6 @@
 {
   "name": "gauge",
-  "displayName": "Gauge Chart",
+  "displayName": "Gauge",
   "filename": "GaugeChart.tsx",
   "config": [
     {
@@ -9,7 +9,7 @@
       "type": "metric"
     },
     {
-      "label": "Look and feel",
+      "label": "Look & feel",
       "type": "separator"
     },
     {
@@ -18,35 +18,48 @@
       "type": "number"
     },
     {
-      "name": "thickness",
-      "label": "Thickness",
-      "type": "number",
-      "min": 1
+      "name": "precision",
+      "label": "Precision",
+      "type": "number"
     },
     {
-      "name": "corner_radius",
-      "label": "Corner Radius",
-      "type": "number",
-      "min": 0
+      "name": "font_family",
+      "label": "Font Family",
+      "type": "font"
     },
     {
-      "label": "Colors & Thresholds",
+      "name": "font_color",
+      "label": "Font Color",
+      "type": "color"
+    },
+    {
+      "name": "label",
+      "label": "Label",
+      "type": "string"
+    },
+    {
+      "name": "hide_label",
+      "label": "Hide Label",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_unit",
+      "label": "Hide Unit",
+      "type": "checkbox"
+    },
+    {
+      "label": "Chart Colors & Thresholds",
       "type": "separator"
     },
     {
       "name": "color",
-      "label": "Color",
+      "label": "Front Color",
       "type": "color"
     },
     {
       "name": "back_color",
       "label": "Back Color",
       "type": "color"
-    },
-    {
-      "name": "hide_thresholds",
-      "label": "Hide Thresholds",
-      "type": "checkbox"
     },
     {
       "label": "Warning",

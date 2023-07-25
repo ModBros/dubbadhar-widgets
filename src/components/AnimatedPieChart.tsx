@@ -52,6 +52,7 @@ interface AnimatedPieChartProps {
   endAngle?: number
   value: number
   outerRadius?: number
+  thickness: number
 }
 
 export const AnimatedPieChart: FunctionComponent<AnimatedPieChartProps> = (
@@ -68,11 +69,11 @@ export const AnimatedPieChart: FunctionComponent<AnimatedPieChartProps> = (
     value,
     max,
     outerRadius,
+    thickness,
     children
   } = props
 
   const outerRad = outerRadius ?? radius
-  const thickness = Math.round(Math.min(width, height) / 10);
 
   return (
     <svg width={'100%'} height={'100%'}>

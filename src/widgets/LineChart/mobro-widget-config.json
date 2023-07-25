@@ -14,6 +14,30 @@
       "type": "number"
     },
     {
+      "label": "Look & Feel",
+      "type": "separator"
+    },
+    {
+      "name": "label",
+      "label": "Label",
+      "type": "string"
+    },
+    {
+      "name": "font_size",
+      "label": "Font Size",
+      "type": "number"
+    },
+    {
+      "name": "font_color",
+      "label": "Font Color",
+      "type": "color"
+    },
+    {
+      "name": "font_family",
+      "label": "Font Family",
+      "type": "font"
+    },
+    {
       "label": "Y Axis",
       "type": "separator"
     },
@@ -28,19 +52,9 @@
       "type": "number"
     },
     {
-      "name": "yaxis_label_color",
-      "label": "Label Color",
-      "type": "color"
-    },
-    {
       "name": "yaxis_label_font_size",
       "label": "Font Size",
       "type": "number"
-    },
-    {
-      "name": "yaxis_label_font",
-      "label": "Label Font",
-      "type": "font"
     },
     {
       "name": "yaxis_label_space",

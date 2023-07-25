@@ -5,29 +5,30 @@ import { useDefaultPieFields } from '../../utils/useDefaultPieFields'
 import {
   Loading,
   MissingConfigPlaceholder,
-  useCheckboxField,
   useIsMetricFieldConfigured
 } from '@modbros/dashboard-sdk'
 import { useThresholds } from '../../utils/metricUtils'
+import { defaultGaugeFrontColor } from '../../utils/constants'
+import { PieChartValue } from '../../components/PieChartValue'
 
 const GaugeChart: FunctionComponent = () => {
   const {
     width,
     height,
-    thickness,
-    cornerRadius,
     channelValue,
     color,
     backColor,
     max,
     radius,
-    value
-  } = useDefaultPieFields('#00ff1e')
-
-  const hideThresholds = useCheckboxField({ field: 'hide_thresholds' })
-  const { warningValue, warningColor, criticalValue, criticalColor, getColor } =
+    value,
+    fontColor,
+    fontFamily,
+    label,
+    hideLabel,
+    hideUnit
+  } = useDefaultPieFields(defaultGaugeFrontColor)
+  const { getColor, warningValue, criticalValue, warningColor, criticalColor } =
     useThresholds(color, max, true)
-
   const metricConfigured = useIsMetricFieldConfigured({ field: 'metric' })
 
   if (!metricConfigured) {
@@ -38,10 +39,11 @@ const GaugeChart: FunctionComponent = () => {
     return <Loading />
   }
 
+  const thickness = Math.round(Math.min(width, height) / 10)
   const angleFactor = 1.5
   const endAngle = Math.PI / angleFactor
   const startAngle = -endAngle
-  const thresholdThickness = !hideThresholds ? thickness / 3 : 0
+  const thresholdThickness = thickness / 3
 
   return (
     <AnimatedPieChart
@@ -49,7 +51,6 @@ const GaugeChart: FunctionComponent = () => {
       channelValue={channelValue}
       color={getColor(value)}
       backColor={backColor}
-      cornerRadius={cornerRadius}
       max={max}
       radius={radius}
       outerRadius={radius - thresholdThickness - 5}
@@ -59,37 +60,49 @@ const GaugeChart: FunctionComponent = () => {
       startAngle={startAngle}
       endAngle={endAngle}
     >
-      {!hideThresholds && (
-        <Shape.Pie
-          outerRadius={radius}
-          innerRadius={radius - thresholdThickness}
-          data={[
-            warningValue,
-            max - warningValue - (max - criticalValue),
-            max - criticalValue
-          ]}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          pieSort={null}
-          pieSortValues={null}
-        >
-          {(pie) =>
-            pie.arcs.map((arc) => (
-              <path
-                key={arc.index}
-                d={pie.path(arc)}
-                fill={
-                  [
-                    color.toRgbaCss(),
-                    warningColor.toRgbaCss(),
-                    criticalColor.toRgbaCss()
-                  ][arc.index]
-                }
-              />
-            ))
-          }
-        </Shape.Pie>
-      )}
+      <Shape.Pie
+        outerRadius={radius}
+        innerRadius={radius - thresholdThickness}
+        data={[
+          warningValue,
+          max - warningValue - (max - criticalValue),
+          max - criticalValue
+        ]}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        pieSort={null}
+        pieSortValues={null}
+      >
+        {(pie) =>
+          pie.arcs.map((arc) => (
+            <path
+              key={arc.index}
+              d={pie.path(arc)}
+              fill={
+                [
+                  color.toRgbaCss(),
+                  warningColor.toRgbaCss(),
+                  criticalColor.toRgbaCss()
+                ][arc.index]
+              }
+            />
+          ))
+        }
+      </Shape.Pie>
+
+      <PieChartValue
+        width={width}
+        height={height}
+        channelValue={channelValue}
+        valueColor={getColor(value)}
+        fontColor={fontColor}
+        fontFamily={fontFamily}
+        max={max}
+        label={label}
+        value={value}
+        hideLabel={hideLabel}
+        hideUnit={hideUnit}
+      />
     </AnimatedPieChart>
   )
 }

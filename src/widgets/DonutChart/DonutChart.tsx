@@ -11,8 +11,21 @@ import { defaultFrontColor } from '../../utils/constants'
 import { PieChartValue } from '../../components/PieChartValue'
 
 const DonutChart: FunctionComponent = () => {
-  const { width, height, channelValue, color, backColor, max, radius, value } =
-    useDefaultPieFields(defaultFrontColor)
+  const {
+    width,
+    height,
+    channelValue,
+    color,
+    backColor,
+    max,
+    radius,
+    value,
+    fontColor,
+    fontFamily,
+    label,
+    hideLabel,
+    hideUnit
+  } = useDefaultPieFields(defaultFrontColor)
   const { getColor } = useThresholds(color, max)
   const metricConfigured = useIsMetricFieldConfigured({ field: 'metric' })
 
@@ -34,18 +47,20 @@ const DonutChart: FunctionComponent = () => {
       width={width}
       height={height}
       value={value}
+      thickness={Math.round(Math.min(width, height) / 9)}
     >
       <PieChartValue
         width={width}
         height={height}
         channelValue={channelValue}
         valueColor={getColor(value)}
-        fontColor={getColor(value)}
-        fontFamily={undefined}
+        fontColor={fontColor}
+        fontFamily={fontFamily}
+        label={label}
         max={max}
         value={value}
-        hideLabel={false}
-        hideUnit={false}
+        hideLabel={hideLabel}
+        hideUnit={hideUnit}
       />
     </AnimatedPieChart>
   )
