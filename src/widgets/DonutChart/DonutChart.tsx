@@ -26,7 +26,7 @@ const DonutChart: FunctionComponent = () => {
     hideLabel,
     hideUnit
   } = useDefaultPieFields(defaultFrontColor)
-  const { getColor } = useThresholds(color, max)
+  const { getColor } = useThresholds(color, max, false)
   const metricConfigured = useIsMetricFieldConfigured({ field: 'metric' })
 
   if (!metricConfigured) {
