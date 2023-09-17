@@ -69,7 +69,7 @@ const Header = forwardRef((props: HeaderProps, ref) => {
   })
 
   const style: CSSProperties = {
-    color: 'white',
+    color: fontColor.toRgbaCss(),
     fontSize: fontSize ? `${fontSize}px` : undefined,
     fontFamily: fontFamily
   }
@@ -159,10 +159,12 @@ const LineChart = () => {
   domain[0] = Math.floor(domain[0])
   domain[1] = Math.ceil(domain[1])
 
-  const chartHeight = headerRef.current ? height - headerRef.current.clientHeight : height
+  const chartHeight = headerRef.current
+    ? height - headerRef.current.clientHeight
+    : height
 
   const timeScale = scaleLinear()
-    .range([0, width])
+    .range([0, hideYAxis ? width : width - yaxisLabelSpace])
     .domain(extent(values, getTimestamp))
   const valueScale = scaleLinear()
     .range([hideYAxis ? chartHeight : chartHeight - yaxisLabelFontSize * 2, 0])
@@ -182,7 +184,9 @@ const LineChart = () => {
         <Group.Group
           left={hideYAxis ? 0 : yaxisLabelSpace}
           top={hideYAxis ? 0 : yaxisLabelFontSize}
-          height={hideYAxis ? chartHeight : chartHeight - yaxisLabelFontSize * 2}
+          height={
+            hideYAxis ? chartHeight : chartHeight - yaxisLabelFontSize * 2
+          }
         >
           <Shape.Area
             stroke={lineColor.toRgbaCss()}
