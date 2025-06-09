@@ -8,7 +8,7 @@
             <SchemaInfo>
               <option name="generatedName" value="New Schema" />
               <option name="name" value="mobro-widget-config.json" />
-              <option name="relativePathToSchema" value="http://localhost:42100/mobro-schema/mobro-widget-config.schema.json" />
+              <option name="relativePathToSchema" value="http://localhost:42169/mobro-schema/mobro-widget-config.schema.json" />
               <option name="schemaVersion" value="JSON Schema version 7" />
               <option name="patterns">
                 <list>
@@ -27,7 +27,7 @@
             <SchemaInfo>
               <option name="generatedName" value="New Schema" />
               <option name="name" value="mobro-widget-pack-config.json" />
-              <option name="relativePathToSchema" value="http://localhost:42100/mobro-schema/mobro-widget-pack-config.schema.json" />
+              <option name="relativePathToSchema" value="http://localhost:42169/mobro-schema/mobro-widget-pack-config.schema.json" />
               <option name="schemaVersion" value="JSON Schema version 7" />
               <option name="patterns">
                 <list>

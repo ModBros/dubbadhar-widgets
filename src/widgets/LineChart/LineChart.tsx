@@ -60,7 +60,7 @@ const StyledHeader = styled.div`
   padding-bottom: 15px;
 `
 
-const Header = forwardRef((props: HeaderProps, ref) => {
+const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const { channelValue, label, fontColor, fontSize, fontFamily } = props
 
   const value = useFormattedMetricValue(channelValue, {

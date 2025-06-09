@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { Group, Shape } from '@visx/visx'
 import { Color, useItemSize } from '@modbros/dashboard-sdk'
 import { ProvidedProps } from '@visx/shape/lib/shapes/Pie'
@@ -59,8 +59,8 @@ interface AnimatedPieChartProps {
   thickness: number
 }
 
-export const AnimatedPieChart: FunctionComponent<AnimatedPieChartProps> = (
-  props
+export const AnimatedPieChart = (
+  props: PropsWithChildren<AnimatedPieChartProps>
 ) => {
   const {
     width,
@@ -96,14 +96,11 @@ export const AnimatedPieChart: FunctionComponent<AnimatedPieChartProps> = (
               <path
                 key={arc.index}
                 d={pie.path(arc)}
-                fill={
-                  backColor.toRgbaCss()
-                }
+                fill={backColor.toRgbaCss()}
               />
             ))
           }
         </Shape.Pie>
-
 
         <Shape.Pie
           outerRadius={outerRad}

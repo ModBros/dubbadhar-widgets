@@ -1,3 +1,8 @@
+# 1.0.0
+
+- Added configuration layouts.
+- Added min sdk support.
+
 # 0.0.3
 
 ## Bugfixes
