@@ -1,0 +1,25 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0)">
+    <rect width="45" height="45" rx="8" fill="url(#bg)"/>
+    <g style="mix-blend-mode:multiply">
+      <rect width="45" height="45" fill="url(#overlay)"/>
+    </g>
+    <polyline points="8,32 14,26 20,28 26,18 32,20 38,12" stroke="#06D71F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <polyline points="8,35 14,30 20,32 26,24 32,26 38,18" stroke="#9FCCEC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="8" y="38" width="30" height="1.5" rx="0.75" fill="#323D68"/>
+    <rect x="8" y="10" width="1.5" height="28" rx="0.75" fill="#323D68"/>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="45" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <linearGradient id="overlay" x1="45" y1="0" x2="0" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <clipPath id="clip0">
+      <rect width="45" height="45" rx="8" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

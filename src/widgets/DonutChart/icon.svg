@@ -1,0 +1,26 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0)">
+    <rect width="45" height="45" rx="8" fill="url(#bg)"/>
+    <g style="mix-blend-mode:multiply">
+      <rect width="45" height="45" fill="url(#overlay)"/>
+    </g>
+    <path d="M22.5 9C15.044 9 9 15.044 9 22.5C9 29.956 15.044 36 22.5 36C29.956 36 36 29.956 36 22.5C36 15.044 29.956 9 22.5 9ZM22.5 30C18.358 30 15 26.642 15 22.5C15 18.358 18.358 15 22.5 15C26.642 15 30 18.358 30 22.5C30 26.642 26.642 30 22.5 30Z" fill="#323D68"/>
+    <path d="M22.5 9C26.09 9 29.41 10.46 31.82 12.88L27.16 17.54C25.95 16.33 24.3 15 22.5 15V9Z" fill="#06D71F"/>
+    <path d="M31.82 12.88C34.24 15.29 36 18.91 36 22.5H30C30 20.7 29.37 19.05 27.16 17.54L31.82 12.88Z" fill="#D5D547"/>
+    <path d="M36 22.5C36 26.09 34.54 29.41 32.12 31.82L27.46 27.16C28.67 25.95 30 24.3 30 22.5H36Z" fill="#C81111"/>
+    <path d="M32.12 31.82C29.71 34.24 26.09 36 22.5 36V30C24.3 30 25.95 28.67 27.46 27.16L32.12 31.82Z" fill="#9FCCEC"/>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="45" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <linearGradient id="overlay" x1="45" y1="0" x2="0" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <clipPath id="clip0">
+      <rect width="45" height="45" rx="8" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

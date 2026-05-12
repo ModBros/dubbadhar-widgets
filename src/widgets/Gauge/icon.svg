@@ -1,0 +1,27 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0)">
+    <rect width="45" height="45" rx="8" fill="url(#bg)"/>
+    <g style="mix-blend-mode:multiply">
+      <rect width="45" height="45" fill="url(#overlay)"/>
+    </g>
+    <path d="M10 30C10 23.096 15.596 17.5 22.5 17.5C29.404 17.5 35 23.096 35 30" stroke="#323D68" stroke-width="4" stroke-linecap="round"/>
+    <path d="M10 30C10 23.096 15.596 17.5 22.5 17.5" stroke="#06D71F" stroke-width="4" stroke-linecap="round"/>
+    <path d="M22.5 17.5C25.85 17.5 28.9 18.86 31 21" stroke="#D5D547" stroke-width="4" stroke-linecap="round"/>
+    <path d="M31 21C33.5 23.5 35 26.6 35 30" stroke="#C81111" stroke-width="4" stroke-linecap="round"/>
+    <line x1="22.5" y1="30" x2="17" y2="22" stroke="#9FCCEC" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="22.5" cy="30" r="2.5" fill="#9FCCEC"/>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="45" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <linearGradient id="overlay" x1="45" y1="0" x2="0" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82A0D9"/>
+      <stop offset="1" stop-color="#15174E"/>
+    </linearGradient>
+    <clipPath id="clip0">
+      <rect width="45" height="45" rx="8" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
