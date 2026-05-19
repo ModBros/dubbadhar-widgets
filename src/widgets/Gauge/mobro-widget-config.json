@@ -1,12 +1,14 @@
 {
   "name": "gauge",
   "displayName": "Gauge",
+  "description": "A partial-arc gauge with an open bottom, similar to a speedometer. Best suited for CPU and GPU usage.",
   "filename": "GaugeChart.tsx",
   "config": [
     {
       "name": "metric",
       "label": "Metric",
-      "type": "metric"
+      "type": "metric",
+      "description": "The metric to visualize on the gauge arc."
     },
     {
       "label": "Look & feel",
@@ -15,37 +17,44 @@
     {
       "name": "max",
       "label": "Max Value",
-      "type": "number"
+      "type": "number",
+      "description": "The maximum value the gauge represents. The needle reaches the far end when the metric equals this value."
     },
     {
       "name": "precision",
       "label": "Precision",
-      "type": "number"
+      "type": "number",
+      "description": "The number of decimal places shown for the metric value displayed inside the gauge."
     },
     {
       "name": "font_family",
       "label": "Font Family",
-      "type": "font"
+      "type": "font",
+      "description": "The font used for the value and label text rendered inside the gauge."
     },
     {
       "name": "font_color",
       "label": "Font Color",
-      "type": "color"
+      "type": "color",
+      "description": "The color of the value and label text rendered inside the gauge."
     },
     {
       "name": "label",
       "label": "Label",
-      "type": "string"
+      "type": "string",
+      "description": "A custom label displayed below the value inside the gauge. Defaults to the metric name if left empty."
     },
     {
       "name": "hide_label",
       "label": "Hide Label",
-      "type": "checkbox"
+      "type": "checkbox",
+      "description": "When checked, the label text inside the gauge is hidden."
     },
     {
       "name": "hide_unit",
       "label": "Hide Unit",
-      "type": "checkbox"
+      "type": "checkbox",
+      "description": "When checked, the unit suffix of the metric value is hidden."
     },
     {
       "label": "Chart Colors & Thresholds",
@@ -54,12 +63,14 @@
     {
       "name": "color",
       "label": "Front Color",
-      "type": "color"
+      "type": "color",
+      "description": "The color of the filled gauge arc under normal conditions."
     },
     {
       "name": "back_color",
       "label": "Back Color",
-      "type": "color"
+      "type": "color",
+      "description": "The color of the unfilled portion of the gauge arc."
     },
     {
       "label": "Warning",
@@ -69,12 +80,14 @@
       "name": "warning_threshold",
       "label": "Threshold (%)",
       "type": "number",
-      "min": 0
+      "min": 0,
+      "description": "The percentage of the max value at which the gauge arc switches to the warning color."
     },
     {
       "name": "warning_color",
       "label": "Color",
-      "type": "color"
+      "type": "color",
+      "description": "The arc color used when the metric exceeds the warning threshold."
     },
     {
       "label": "Critical",
@@ -84,12 +97,14 @@
       "name": "critical_threshold",
       "label": "Threshold (%)",
       "type": "number",
-      "min": 0
+      "min": 0,
+      "description": "The percentage of the max value at which the gauge arc switches to the critical color."
     },
     {
       "name": "critical_color",
       "label": "Color",
-      "type": "color"
+      "type": "color",
+      "description": "The arc color used when the metric exceeds the critical threshold."
     }
   ]
 }

@@ -1,12 +1,14 @@
 {
   "name": "bar_chart",
   "displayName": "Bar",
+  "description": "A horizontal progress bar that fills based on a metric's current value relative to its maximum. Ideal for visualizing disk usage, memory consumption, and individual CPU thread loads.",
   "filename": "BarChart.tsx",
   "config": [
     {
       "name": "metric",
       "label": "Metric",
-      "type": "metric"
+      "type": "metric",
+      "description": "The metric to visualize as a progress bar."
     },
     {
       "label": "Look & feel",
@@ -15,7 +17,8 @@
     {
       "name": "max",
       "label": "Max Value",
-      "type": "number"
+      "type": "number",
+      "description": "The maximum value the bar represents. The bar fills to 100% when the metric reaches this value."
     },
     {
       "label": "Colors & Thresholds",
@@ -24,12 +27,14 @@
     {
       "name": "color",
       "label": "Color",
-      "type": "color"
+      "type": "color",
+      "description": "The fill color of the bar under normal conditions."
     },
     {
       "name": "back_color",
       "label": "Back Color",
-      "type": "color"
+      "type": "color",
+      "description": "The background color of the unfilled portion of the bar."
     },
     {
       "label": "Warning",
@@ -39,12 +44,14 @@
       "name": "warning_threshold",
       "label": "Threshold (%)",
       "type": "number",
-      "min": 0
+      "min": 0,
+      "description": "The percentage of the max value at which the bar switches to the warning color."
     },
     {
       "name": "warning_color",
       "label": "Color",
-      "type": "color"
+      "type": "color",
+      "description": "The fill color of the bar when the metric exceeds the warning threshold."
     },
     {
       "label": "Critical",
@@ -54,12 +61,14 @@
       "name": "critical_threshold",
       "label": "Threshold (%)",
       "type": "number",
-      "min": 0
+      "min": 0,
+      "description": "The percentage of the max value at which the bar switches to the critical color."
     },
     {
       "name": "critical_color",
       "label": "Color",
-      "type": "color"
+      "type": "color",
+      "description": "The fill color of the bar when the metric exceeds the critical threshold."
     }
   ]
 }
